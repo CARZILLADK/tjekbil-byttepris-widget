@@ -86,6 +86,17 @@
       grid-template-columns: 1fr 440px;
       gap: 64px;
       align-items: center;
+      position: relative;
+    }
+
+    .mascot {
+      position: absolute;
+      bottom: 0;
+      right: 480px;
+      width: 160px;
+      pointer-events: none;
+      filter: drop-shadow(0 8px 24px rgba(0,0,0,0.12));
+      z-index: 2;
     }
 
     .fake-hero-text h1 {
@@ -252,6 +263,9 @@
         <div id="tjekbil-widget"></div>
       </div>
       <!-- ═══════════════════════════════════ -->
+
+      <!-- Mascot -->
+      <img src="mascot.png" alt="CARZILLA mascot" class="mascot" />
 
     </div>
   </div>
