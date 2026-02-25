@@ -15,8 +15,8 @@
     apiBase: 'https://api.tjekbil-carzilla.dk/api/v1',
     embedToken: document.currentScript?.dataset?.token || 'DEMO_TOKEN',
     containerId: 'tjekbil-widget',
-    primaryColor: document.currentScript?.dataset?.color || '#1a1a2e',
-    accentColor: document.currentScript?.dataset?.accent || '#e63946',
+    primaryColor: document.currentScript?.dataset?.color || '#050922',
+    accentColor: document.currentScript?.dataset?.accent || '#E5FE01',
     // Demo-tilstand: bruges når ingen rigtig API er tilgængelig
     demoMode: document.currentScript?.dataset?.demo === 'true' || true,
   };
@@ -131,8 +131,8 @@
 
     .w-step.active .w-step-dot {
       background: ${CONFIG.accentColor};
-      color: #fff;
-      box-shadow: 0 0 0 4px ${CONFIG.accentColor}33;
+      color: #050922;
+      box-shadow: 0 0 0 4px ${CONFIG.accentColor}55;
     }
 
     .w-step.done .w-step-dot {
@@ -214,10 +214,10 @@
 
     .w-btn-primary {
       background: ${CONFIG.accentColor};
-      color: #fff;
+      color: #050922;
     }
 
-    .w-btn-primary:hover { background: #c1121f; transform: translateY(-1px); box-shadow: 0 4px 16px ${CONFIG.accentColor}55; }
+    .w-btn-primary:hover { background: #d4eb00; transform: translateY(-1px); box-shadow: 0 4px 16px ${CONFIG.accentColor}88; }
     .w-btn-primary:active { transform: translateY(0); }
     .w-btn-primary:disabled { background: #ccc; cursor: not-allowed; transform: none; box-shadow: none; }
 
