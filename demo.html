@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TjekBil Widget — Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f0f2f8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Demo header ── */
+    .demo-topbar {
+      background: #1a1a2e;
+      color: white;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+    }
+
+    .demo-topbar-brand {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 700; font-size: 16px;
+    }
+
+    .demo-badge {
+      background: #e63946;
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ── Fake dealer site ── */
+    .fake-site {
+      background: white;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .fake-nav {
+      background: #1a1a2e;
+      padding: 16px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .fake-nav-logo {
+      color: white;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .fake-nav-logo span { color: #e63946; }
+
+    .fake-nav-links {
+      display: flex; gap: 28px;
+      list-style: none;
+    }
+
+    .fake-nav-links a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .fake-hero {
+      background: linear-gradient(135deg, #f8f9ff 0%, #e8eaf6 100%);
+      padding: 64px 48px;
+      display: grid;
+      grid-template-columns: 1fr 440px;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .fake-hero-text h1 {
+      font-size: 40px;
+      font-weight: 800;
+      color: #1a1a2e;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .fake-hero-text h1 span { color: #e63946; }
+
+    .fake-hero-text p {
+      font-size: 16px;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .fake-hero-usp {
+      display: flex; flex-direction: column; gap: 8px;
+    }
+
+    .fake-usp-item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 14px; color: #444; font-weight: 500;
+    }
+
+    .fake-usp-icon {
+      width: 22px; height: 22px;
+      background: #e63946;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; color: white; flex-shrink: 0;
+    }
+
+    /* ── Widget area ── */
+    .widget-area {
+      position: relative;
+    }
+
+    #tjekbil-widget {
+      width: 100%;
+    }
+
+    /* ── Demo info panel ── */
+    .demo-panel {
+      background: #1a1a2e;
+      color: white;
+      padding: 32px 48px;
+    }
+
+    .demo-panel h3 {
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      opacity: 0.5;
+      margin-bottom: 20px;
+    }
+
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .demo-tip {
+      background: rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 16px;
+    }
+
+    .demo-tip-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.5;
+      margin-bottom: 6px;
+    }
+
+    .demo-tip-plates {
+      display: flex; gap: 6px; flex-wrap: wrap;
+    }
+
+    .demo-plate {
+      background: white;
+      color: #1a1a2e;
+      font-weight: 700;
+      font-family: 'Courier New', monospace;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 13px;
+      cursor: pointer;
+      letter-spacing: 1px;
+      border: 2px solid transparent;
+      transition: all 0.15s;
+    }
+
+    .demo-plate:hover { border-color: #e63946; }
+
+    .demo-tip-note { font-size: 12px; opacity: 0.6; line-height: 1.5; }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .fake-hero { grid-template-columns: 1fr; padding: 32px 20px; gap: 32px; }
+      .fake-hero-text h1 { font-size: 28px; }
+      .fake-nav { padding: 14px 20px; }
+      .fake-nav-links { display: none; }
+      .demo-panel { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Demo topbar -->
+  <div class="demo-topbar">
+    <div class="demo-topbar-brand">
+      CARZILLA × SmartSalg
+      <span class="demo-badge">Demo</span>
+    </div>
+    <span style="opacity:0.5">TjekBil Byttepris Widget — MVP prototype</span>
+  </div>
+
+  <!-- Simuleret forhandlerside -->
+  <div class="fake-site">
+    <nav class="fake-nav">
+      <div class="fake-nav-logo">Bil<span>Center</span> Aarhus</div>
+      <ul class="fake-nav-links">
+        <li><a href="#">Nye biler</a></li>
+        <li><a href="#">Brugte biler</a></li>
+        <li><a href="#">Finansiering</a></li>
+        <li><a href="#">Om os</a></li>
+      </ul>
+    </nav>
+
+    <div class="fake-hero">
+      <div class="fake-hero-text">
+        <h1>Sælg din bil<br/>til den <span>rigtige pris</span></h1>
+        <p>
+          Få en gratis og uforpligtende vurdering af din bil på under 30 sekunder.
+          Vores rådgivere sørger for den bedste deal — både på byttebil og ny bil.
+        </p>
+        <div class="fake-hero-usp">
+          <div class="fake-usp-item">
+            <div class="fake-usp-icon">✓</div>
+            Gratis og uforpligtende vurdering
+          </div>
+          <div class="fake-usp-item">
+            <div class="fake-usp-icon">✓</div>
+            Svar inden for 2 timer
+          </div>
+          <div class="fake-usp-item">
+            <div class="fake-usp-icon">✓</div>
+            Vi klarer al papirarbejdet
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════ -->
+      <!--       WIDGET MOUNTPUNKT            -->
+      <!-- ═══════════════════════════════════ -->
+      <div class="widget-area">
+        <div id="tjekbil-widget"></div>
+      </div>
+      <!-- ═══════════════════════════════════ -->
+
+    </div>
+  </div>
+
+  <!-- Demo info panel -->
+  <div class="demo-panel">
+    <h3>Demo vejledning</h3>
+    <div class="demo-grid">
+      <div class="demo-tip">
+        <div class="demo-tip-label">Prøv disse nummerplader</div>
+        <div class="demo-tip-plates">
+          <span class="demo-plate" onclick="fillPlate('AB12345')">AB12345</span>
+          <span class="demo-plate" onclick="fillPlate('CD67890')">CD67890</span>
+          <span class="demo-plate" onclick="fillPlate('EF11223')">EF11223</span>
+        </div>
+      </div>
+      <div class="demo-tip">
+        <div class="demo-tip-label">API status</div>
+        <div class="demo-tip-note">Kører i demo-tilstand.<br/>Erstat <code>data-demo="false"</code> og <code>data-token</code> med rigtige værdier.</div>
+      </div>
+      <div class="demo-tip">
+        <div class="demo-tip-label">Embed kode</div>
+        <div class="demo-tip-note">
+          <code>&lt;div id="tjekbil-widget"&gt;&lt;/div&gt;</code><br/>
+          <code>&lt;script src="tjekbil-widget.js"<br/>&nbsp;data-token="EMBED_TOKEN"&gt;&lt;/script&gt;</code>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Widget script -->
+  <script src="tjekbil-widget.js" data-token="DEMO_TOKEN" data-demo="true"></script>
+
+  <script>
+    // Hjælpefunktion til at klikke en demo-nummerplade ind
+    function fillPlate(plate) {
+      const widget = document.getElementById('tjekbil-widget');
+      if (!widget || !widget.shadowRoot) return;
+      const input = widget.shadowRoot.querySelector('#plate-input');
+      if (input) {
+        input.value = plate;
+        input.dispatchEvent(new Event('input'));
+        setTimeout(() => {
+          widget.shadowRoot.querySelector('#btn-lookup')?.click();
+        }, 100);
+      }
+    }
+  </script>
+
+</body>
+</html>
