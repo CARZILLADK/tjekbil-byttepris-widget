@@ -1,6 +1,5 @@
 /**
- * TjekBil Byttepris Widget
- * CARZILLA x SmartSalg — MVP
+ * CARZILLA Byttepris Widget
  *
  * Embed:
  *   <div id="tjekbil-widget"></div>
@@ -420,7 +419,7 @@
               <circle cx="22" cy="22" r="2.5" fill="white"/>
               <path d="M4 18h24" stroke="white" stroke-width="1.5" opacity="0.5"/>
             </svg>
-            <span class="w-header-brand">CARZILLA × SmartSalg</span>
+            <span class="w-header-brand">CARZILLA BYTTEPRIS</span>
           </div>
           <h2>Hvad er din bil værd?</h2>
           <p>Få en gratis vurdering på under 30 sekunder</p>
@@ -482,7 +481,7 @@
             <div class="w-price-box">
               <div class="w-price-label">Estimeret byttepris</div>
               <div class="w-price-amount" id="price-amount">–</div>
-              <div class="w-price-note">Vejledende pris via SmartSalg · Inkl. moms</div>
+              <div class="w-price-note">Vejledende byttepris · Gratis og uforpligtende</div>
             </div>
             <button class="w-btn w-btn-primary" id="btn-to-contact">
               Få et præcist tilbud — gratis
@@ -817,7 +816,7 @@
   function mount() {
     const container = document.getElementById(CONFIG.containerId);
     if (!container) {
-      console.warn(`[TjekBil Widget] Ingen container med id="${CONFIG.containerId}" fundet.`);
+      console.warn(`[CARZILLA Byttepris] Ingen container med id="${CONFIG.containerId}" fundet.`);
       return;
     }
     new TjekBilWidget(container);
