@@ -115,7 +115,7 @@
 
     .w-step.done:not(:last-child)::after,
     .w-step.active:not(:last-child)::after {
-      background: ${CONFIG.accentColor};
+      background: ${CONFIG.primaryColor};
     }
 
     .w-step-dot {
@@ -129,9 +129,9 @@
     }
 
     .w-step.active .w-step-dot {
-      background: ${CONFIG.accentColor};
-      color: #050922;
-      box-shadow: 0 0 0 4px ${CONFIG.accentColor}55;
+      background: ${CONFIG.primaryColor};
+      color: ${CONFIG.accentColor};
+      box-shadow: 0 0 0 4px ${CONFIG.primaryColor}33;
     }
 
     .w-step.done .w-step-dot {
@@ -146,7 +146,7 @@
       text-align: center;
     }
 
-    .w-step.active .w-step-label { color: ${CONFIG.accentColor}; font-weight: 700; }
+    .w-step.active .w-step-label { color: ${CONFIG.primaryColor}; font-weight: 700; }
     .w-step.done .w-step-label   { color: ${CONFIG.primaryColor}; }
 
     /* ── Form elementer ── */
@@ -168,7 +168,7 @@
       transition: border-color 0.2s;
     }
 
-    .w-plate-wrap:focus-within { border-color: ${CONFIG.accentColor}; }
+    .w-plate-wrap:focus-within { border-color: ${CONFIG.primaryColor}; }
 
     .w-plate-flag {
       background: ${CONFIG.primaryColor};
@@ -252,7 +252,7 @@
 
     /* ── Bil-kort ── */
     .w-car-card {
-      background: #f8f9ff;
+      background: #f4f5f7;
       border-radius: 12px;
       padding: 16px 18px;
       margin-bottom: 20px;
@@ -318,7 +318,7 @@
       font-family: inherit;
     }
 
-    .w-input:focus { border-color: ${CONFIG.accentColor}; }
+    .w-input:focus { border-color: ${CONFIG.primaryColor}; }
     .w-input.error { border-color: #e63946; }
 
     .w-error { color: #e63946; font-size: 11px; margin-top: 4px; display: none; }
