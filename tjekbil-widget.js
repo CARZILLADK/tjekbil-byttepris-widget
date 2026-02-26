@@ -51,6 +51,26 @@
       background: ${CONFIG.primaryColor};
       padding: 24px 28px;
       color: #fff;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .w-header-content {
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .w-header-mascot {
+      width: 110px;
+      flex-shrink: 0;
+      align-self: flex-end;
+      margin-bottom: -24px;
+      margin-right: -8px;
+      filter: drop-shadow(-4px 0 12px rgba(0,0,0,0.3));
     }
 
     .w-header-logo {
@@ -411,18 +431,21 @@
     return `
       <div class="w-wrap">
         <div class="w-header">
-          <div class="w-header-logo">
-            <svg viewBox="0 0 32 32" fill="none">
-              <rect width="32" height="32" rx="8" fill="${CONFIG.accentColor}"/>
-              <path d="M6 20l4-8h12l4 8H6z" fill="white" opacity="0.9"/>
-              <circle cx="10" cy="22" r="2.5" fill="white"/>
-              <circle cx="22" cy="22" r="2.5" fill="white"/>
-              <path d="M4 18h24" stroke="white" stroke-width="1.5" opacity="0.5"/>
-            </svg>
-            <span class="w-header-brand">CARZILLA BYTTEPRIS</span>
+          <div class="w-header-content">
+            <div class="w-header-logo">
+              <svg viewBox="0 0 32 32" fill="none">
+                <rect width="32" height="32" rx="8" fill="${CONFIG.accentColor}"/>
+                <path d="M6 20l4-8h12l4 8H6z" fill="white" opacity="0.9"/>
+                <circle cx="10" cy="22" r="2.5" fill="white"/>
+                <circle cx="22" cy="22" r="2.5" fill="white"/>
+                <path d="M4 18h24" stroke="white" stroke-width="1.5" opacity="0.5"/>
+              </svg>
+              <span class="w-header-brand">CARZILLA BYTTEPRIS</span>
+            </div>
+            <h2>Hvad er din bil værd?</h2>
+            <p>Få en gratis vurdering på under 30 sekunder</p>
           </div>
-          <h2>Hvad er din bil værd?</h2>
-          <p>Få en gratis vurdering på under 30 sekunder</p>
+          <img src="mascot.png" alt="" class="w-header-mascot" />
         </div>
 
         <div class="w-body">
